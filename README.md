@@ -26,7 +26,7 @@ A minimal, ready-to-use template for creating Hytale plugins with modern build t
 ### 1. Clone or Download
 
 ```bash
-git clone https://github.com/yourusername/hytale-plugin-template.git
+git clone https://github.com/realBritakee/hytale-plugin-template.git
 cd hytale-plugin-template
 ```
 
@@ -97,7 +97,7 @@ Write your plugin code in `src/main/java/`:
 - Storage
 - Utilities
 
-See our [documentation](../Documentation/) for examples and patterns.
+See our [documentation](https://britakee-studios.gitbook.io/hytale-modding-documentation) for examples and patterns.
 
 ### 6. Test Your Plugin (Automated!)
 
@@ -254,9 +254,9 @@ src/main/java/com/yourname/yourplugin/
 ```
 
 **See our documentation for examples:**
-- [Getting Started with Plugins](../Documentation/07-getting-started-with-plugins.md)
-- [Advanced Plugin Patterns](../Documentation/12-advanced-plugin-patterns.md)
-- [Common Plugin Features](../Documentation/14-common-plugin-features.md)
+- [Getting Started with Plugins](https://britakee-studios.gitbook.io/hytale-modding-documentation/plugins-java-development/07-getting-started-with-plugins)
+- [Advanced Plugin Patterns](https://britakee-studios.gitbook.io/hytale-modding-documentation/plugins-java-development/12-advanced-plugin-patterns)
+- [Common Plugin Features](https://britakee-studios.gitbook.io/hytale-modding-documentation/plugins-java-development/14-common-plugin-features)
 
 ---
 
@@ -328,10 +328,10 @@ GitHub Actions will automatically build and create a release with your plugin JA
 
 For detailed guides on plugin development, see:
 
-- [Hytale Modding Documentation](https://github.com/yourusername/hytale-modding/tree/main/Documentation)
-- [Getting Started with Plugins](../Documentation/07-getting-started-with-plugins.md)
-- [Advanced Plugin Patterns](../Documentation/12-advanced-plugin-patterns.md)
-- [Common Plugin Features](../Documentation/14-common-plugin-features.md)
+- [Hytale Modding Documentation](https://britakee-studios.gitbook.io/hytale-modding-documentation)
+- [Getting Started with Plugins](https://britakee-studios.gitbook.io/hytale-modding-documentation/plugins-java-development/07-getting-started-with-plugins)
+- [Advanced Plugin Patterns](https://britakee-studios.gitbook.io/hytale-modding-documentation/plugins-java-development/12-advanced-plugin-patterns)
+- [Common Plugin Features](https://britakee-studios.gitbook.io/hytale-modding-documentation/plugins-java-development/14-common-plugin-features)
 
 ---
 
@@ -354,8 +354,8 @@ This template is released under the MIT License. You are free to use it for any 
 
 ## Support
 
-- **Issues:** [GitHub Issues](https://github.com/yourusername/hytale-plugin-template/issues)
-- **Documentation:** [Hytale Modding Docs](https://github.com/yourusername/hytale-modding)
+- **Issues:** [GitHub Issues](https://github.com/realBritakee/hytale-template-plugin/issues)
+- **Documentation:** [Hytale Modding Docs](https://britakee-studios.gitbook.io/hytale-modding-documentation)
 - **Community:** Join the Hytale modding community
 
 ---
