@@ -1,17 +1,17 @@
 {
-  "Group": "TemplatePlugin",
-  "Name": "TemplatePlugin",
+  "Group": "BrighterTorches",
+  "Name": "BrighterTorches",
   "Version": "1.0.0",
-  "Description": "A Hytale plugin template",
+  "Description": "Makes torches emit brighter light for better visibility in caves and dark areas",
   "Authors": [
     {
-      "Name": "YourName",
-      "Email": "your.email@example.com",
-      "Url": "https://your-website.com"
+      "Name": "Claude",
+      "Email": "mod@example.com",
+      "Url": "https://github.com/jackmhny/brighter-torches"
     }
   ],
-  "Website": "https://github.com/yourusername/hytale-plugin-template",
-  "Main": "com.example.templateplugin.TemplatePlugin",
+  "Website": "https://github.com/jackmhny/brighter-torches",
+  "Main": "com.brightertorches.BrighterTorchesPlugin",
   "ServerVersion": "*",
   "Dependencies": {},
   "OptionalDependencies": {},

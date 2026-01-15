@@ -1,5 +1,17 @@
 {
-  "pluginName": "TemplatePlugin",
+  "pluginName": "BrighterTorches",
   "version": "1.0.0",
-  "debugMode": false
+  "debugMode": false,
+  "brightness": {
+    "torchLightLevel": 15,
+    "wallTorchLightLevel": 15,
+    "soulTorchLightLevel": 12,
+    "redstoneTorchLightLevel": 10,
+    "enabled": true
+  },
+  "advanced": {
+    "modifyVanillaTorches": true,
+    "applyToAllTorchTypes": true,
+    "lightRadius": 20
+  }
 }
