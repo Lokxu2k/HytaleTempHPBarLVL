@@ -1,0 +1,7 @@
+{
+  "name": "HPBarAndLevelUI",
+  "version": "1.0.0",
+  "author": "Lokxu2k",
+  "description": "Wyświetla pasek HP i poziom gracza na HUD oraz wysyła wiadomość powitalną.",
+  "entrypoint": "scripts/main.hscript"
+}
