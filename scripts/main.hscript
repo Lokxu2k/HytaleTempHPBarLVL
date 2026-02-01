@@ -1,57 +1,55 @@
-// Entry point for the script-based mod.
-// Keeps UI logic minimal and readable for quick customization.
+// Główna funkcja moda — HUD z HP i poziomem
 
-// Store per-player UI references so we can update/remove them cleanly.
-var playerHud = new Map()
+let playerData = {};
 
-// Create and show the HP + Level UI for a player.
-function showHud(player) {
-    // Build a simple screen overlay container.
-    var ui = Ui.create("hp_hud")
-    ui.setAnchor("bottom_left")
-    ui.setOffset(24, -64)
+onEvent("player_join", function (event) {
+    let player = event.player;
 
-    // HP bar background.
-    var hpBar = ui.addBar("hp_bar")
-    hpBar.setSize(220, 16)
-    hpBar.setColor("#e23b3b")
+    // Powitanie
+    player.sendMessage("Witaj na serwerze!");
 
-    // Level label to the right of the bar.
-    var levelLabel = ui.addText("level_label")
-    levelLabel.setText("Lv. 1")
-    levelLabel.setOffset(230, -2)
+    // Tworzenie HUD dla gracza
+    let ui = player.createHud();
 
-    // Store references so we can update values later.
-    playerHud.set(player.id, { ui: ui, hpBar: hpBar, levelLabel: levelLabel })
+    // Tworzymy teksty: HP i poziom
+    let hpText = ui.createText()
+        .setText("HP: ...")
+        .setPosition(10, 10)
+        .setColor("red")
+        .setScale(1.5)
+        .show();
 
-    // Show the UI on the player's screen.
-    ui.show(player)
-}
+    let levelText = ui.createText()
+        .setText("Level: ...")
+        .setPosition(10, 30)
+        .setColor("white")
+        .setScale(1.2)
+        .show();
 
-// Update the UI values each tick or when stats change.
-function updateHud(player) {
-    var hud = playerHud.get(player.id)
-    if (hud == null) {
-        return
+    // Zapisujemy do playerData
+    playerData[player.id] = { ui, hpText, levelText };
+});
+
+onEvent("player_leave", function (event) {
+    let id = event.player.id;
+    if (playerData[id]) {
+        // Usuwamy HUD gdy gracz wychodzi
+        playerData[id].ui.clear();
+        delete playerData[id];
     }
+});
 
-    // Update HP bar percent (0.0 - 1.0).
-    var healthPercent = player.getHealth() / player.getMaxHealth()
-    hud.hpBar.setPercent(healthPercent)
+onEvent("tick", function () {
+    for (let id in playerData) {
+        let player = getPlayerById(id);
+        if (player && player.isOnline()) {
+            let data = playerData[id];
 
-    // Update level text.
-    hud.levelLabel.setText("Lv. " + player.getLevel())
-}
+            let hp = Math.floor(player.getHealth());
+            let level = player.getLevel ? player.getLevel() : 1;
 
-// When a player joins, show the HUD and optionally greet them.
-events.onPlayerJoin(function (player) {
-    showHud(player)
-    player.sendMessage("Welcome! Your HP bar and level HUD are active.")
-})
-
-// Keep UI updated with a light periodic refresh.
-events.onTick(function () {
-    for (var player in server.getPlayers()) {
-        updateHud(player)
+            data.hpText.setText("HP: " + hp);
+            data.levelText.setText("Level: " + level);
+        }
     }
-})
+});
