@@ -1,6 +1,7 @@
 {
-  "name": "HytaleTempHPBarLVL",
+  "name": "HPBarAndLevelUI",
   "version": "1.0.0",
-  "author": "Hytale Modder",
-  "entry": "scripts/main.hscript"
+  "author": "Lokxu2k",
+  "description": "Wyświetla pasek HP i poziom gracza na HUD oraz wysyła wiadomość powitalną.",
+  "entrypoint": "scripts/main.hscript"
 }
