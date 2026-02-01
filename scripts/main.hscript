@@ -1,0 +1,57 @@
+// Entry point for the script-based mod.
+// Keeps UI logic minimal and readable for quick customization.
+
+// Store per-player UI references so we can update/remove them cleanly.
+var playerHud = new Map()
+
+// Create and show the HP + Level UI for a player.
+function showHud(player) {
+    // Build a simple screen overlay container.
+    var ui = Ui.create("hp_hud")
+    ui.setAnchor("bottom_left")
+    ui.setOffset(24, -64)
+
+    // HP bar background.
+    var hpBar = ui.addBar("hp_bar")
+    hpBar.setSize(220, 16)
+    hpBar.setColor("#e23b3b")
+
+    // Level label to the right of the bar.
+    var levelLabel = ui.addText("level_label")
+    levelLabel.setText("Lv. 1")
+    levelLabel.setOffset(230, -2)
+
+    // Store references so we can update values later.
+    playerHud.set(player.id, { ui: ui, hpBar: hpBar, levelLabel: levelLabel })
+
+    // Show the UI on the player's screen.
+    ui.show(player)
+}
+
+// Update the UI values each tick or when stats change.
+function updateHud(player) {
+    var hud = playerHud.get(player.id)
+    if (hud == null) {
+        return
+    }
+
+    // Update HP bar percent (0.0 - 1.0).
+    var healthPercent = player.getHealth() / player.getMaxHealth()
+    hud.hpBar.setPercent(healthPercent)
+
+    // Update level text.
+    hud.levelLabel.setText("Lv. " + player.getLevel())
+}
+
+// When a player joins, show the HUD and optionally greet them.
+events.onPlayerJoin(function (player) {
+    showHud(player)
+    player.sendMessage("Welcome! Your HP bar and level HUD are active.")
+})
+
+// Keep UI updated with a light periodic refresh.
+events.onTick(function () {
+    for (var player in server.getPlayers()) {
+        updateHud(player)
+    }
+})
