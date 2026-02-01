@@ -1,17 +1,11 @@
-// Główna funkcja moda — HUD z HP i poziomem
-
 let playerData = {};
 
 onEvent("player_join", function (event) {
     let player = event.player;
-
-    // Powitanie
     player.sendMessage("Witaj na serwerze!");
 
-    // Tworzenie HUD dla gracza
     let ui = player.createHud();
 
-    // Tworzymy teksty: HP i poziom
     let hpText = ui.createText()
         .setText("HP: ...")
         .setPosition(10, 10)
@@ -26,14 +20,12 @@ onEvent("player_join", function (event) {
         .setScale(1.2)
         .show();
 
-    // Zapisujemy do playerData
     playerData[player.id] = { ui, hpText, levelText };
 });
 
 onEvent("player_leave", function (event) {
     let id = event.player.id;
     if (playerData[id]) {
-        // Usuwamy HUD gdy gracz wychodzi
         playerData[id].ui.clear();
         delete playerData[id];
     }
@@ -44,7 +36,6 @@ onEvent("tick", function () {
         let player = getPlayerById(id);
         if (player && player.isOnline()) {
             let data = playerData[id];
-
             let hp = Math.floor(player.getHealth());
             let level = player.getLevel ? player.getLevel() : 1;
 
